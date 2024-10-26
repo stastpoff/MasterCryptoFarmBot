@@ -13,6 +13,17 @@ import os
 import json
 
 import mcf_utils.logColors as lc
+
+try:
+    import config
+except ImportError:
+    print(
+        f"{lc.r}Please create a config.py file with the required variables, check the example file (config.py.sample){lc.rs}"
+    )
+    raise ImportError(
+        "Please create a config.py file with the required variables, check the example file (config.py.sample)"
+    )
+
 from mcf_utils.database import Database
 from mcf_utils.modules import Module
 from mcf_utils.webserver import WebServer
@@ -28,15 +39,7 @@ try:
 except Exception as e:
     pass
 
-try:
-    import config
-except ImportError:
-    print(
-        f"{lc.r}Please create a config.py file with the required variables, check the example file (config.py.sample){lc.rs}"
-    )
-    raise ImportError(
-        "Please create a config.py file with the required variables, check the example file (config.py.sample)"
-    )
+
 
 
 log = lc.getLogger()
